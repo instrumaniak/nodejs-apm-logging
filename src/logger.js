@@ -5,7 +5,7 @@ const { ElasticsearchTransport } = require("winston-elasticsearch");
 const esTransportOpts = {
   level: "info",
   clientOpts: {
-    node: "http://localhost:9200", // Replace with your Elasticsearch URL
+    node: process.env.ELASTIC_SEARCH_URL || "", // Replace with your Elasticsearch URL
   },
   indexPrefix: "logs", // Optional: Customize the index name
 };

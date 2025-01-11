@@ -1,10 +1,11 @@
 // src/app.js
+require("dotenv").config();
 const express = require("express");
 const apm = require("elastic-apm-node").start({
-  serviceName: "sample-nodejs-service",
-  // secretToken: "", // Add Elastic APM secret token if applicable
-  serverUrl: "http://apm-server:8200", // APM Server URL
-  environment: "development",
+  serviceName: process.env.ELASTIC_APM_SERVICE_NAME || "",
+  secretToken: process.env.ELASTIC_APM_SECRET_TOKEN || "", // Add Elastic APM secret token if applicable
+  serverUrl: process.env.ELASTIC_APM_SERVER_URL || "", // APM Server URL
+  environment: process.env.ELASTIC_APM_ENV || "development",
 });
 const logger = require("./logger");
 const routes = require("./routes/index");
